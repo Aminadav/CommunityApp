@@ -1,0 +1,25 @@
+<ion-view view-title="Events">
+    <ion-content>
+        <ion-list>
+            <ion-item type="item-text-wrap">
+                <div ng-repeat="event in data.events | orderBy: 'start.dateTime'" class="list card">
+                    <div class="item item-text-wrap">
+                        <h2>{{event.summary}}</h2>
+                        <div>
+                            {{event.start.dateTime | date : "MMMM d yyyy"}}
+                            <br>
+                            {{event.start.dateTime | date : "HH:mm"}}-{{event.end.dateTime | date : "HH:mm"}}
+                        </div>
+                        <div>{{event.description | limitTo: 100}}</div>
+                        <div>
+                            <a class="item" href="{{event.htmlLink}}">
+                                {{event.htmlLink}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+

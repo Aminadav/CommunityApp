@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'mijEvents', 'mijLocal', 'mijNews'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -40,46 +40,38 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+      .state('tab.events', {
+        url: '/events',
+        views: {
+          'tab-events': {
+            templateUrl: 'js/events/eventsTemplate.html',
+            controller: 'EventsCtrl',
+            controllerAs: 'eventsController'
+          }
         }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+      })
+      .state('tab.local', {
+        url: '/local',
+        views: {
+          'tab-local':{
+            templateUrl: 'js/local/localTemplate.html',
+            controller: 'LocalCtrl',
+            controllerAs: 'localController'
+          }
         }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
+      })
+      .state('tab.news',{
+        url:'/news',
+        views: {
+          'tab-news':{
+            templateUrl: 'js/news/newsTemplate.html',
+            controller: 'NewsCtrl',
+            controllerAs: 'newsController'
+          }
+        }
+      });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/events');
 
 });
