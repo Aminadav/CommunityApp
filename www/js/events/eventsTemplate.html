@@ -4,7 +4,7 @@
             <ion-item type="item-text-wrap">
                 <div ng-repeat="event in data.events | orderBy: 'start.dateTime'" class="list card">
                     <div class="item item-text-wrap">
-                        <h2>{{event.summary}}</h2>
+                        <h2 style="background-color: #e54b4b">{{event.summary}}</h2>
                         <div>
                             {{event.start.dateTime | date : "MMMM d yyyy"}}
                             <br>
