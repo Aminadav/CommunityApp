@@ -2,10 +2,8 @@
     <ion-content>
         <ion-list>
             <ion-item type="item-text-wrap">
-                <div ng-repeat="entry in data.news | orderBy: 'updated.$t'" class="list card">
-                    <h2>{{entry.gsx$header.$t}}</h2>
-                    <img ng-src="{{entry.gsx$image.$t}}" style="height: 200px; max-width: 100%;" />
-                    <div class="item item-text-wrap">{{entry.gsx$text.$t}}</div>
+                <div ng-repeat="entry in data.news | orderBy: 'created_at' track by entry.id" class="list card">
+                    <div class="item item-text-wrap">{{entry.text}}</div>
                 </div>
             </ion-item>
         </ion-list>

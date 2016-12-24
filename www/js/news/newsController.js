@@ -2,13 +2,13 @@ angular.module('mijNews')
     .controller('NewsCtrl', function($scope, NewsService) {
         $scope.data = {};
 
-        $scope.getNews = function(){
-            NewsService.getNews()
-                .then(function(news){
-                    $scope.data['news'] = news;
-                })
+        $scope.getTwitterPosts = function(){
+            NewsService.getTwitterPosts(function(news){
+                $scope.data['news'] = JSON.parse(news);
+                $scope.$apply();
+            });
         }
 
-        $scope.getNews();
+        $scope.getTwitterPosts();
 
     })
